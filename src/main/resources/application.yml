@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:ct
+    username: sa
+    password:
+    sql-script-encoding: utf-8
+    schema: classpath:schema/bitcoin.sql
+    data:   classpath:data/bitcoinData.sql
+
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect?characterEncoding=utf-8
+    hibernate:
+      ddl-auto: none
