@@ -36,7 +36,7 @@ public class BitcoinEntity {
     Date createTime;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Generated(value = GenerationTime.ALWAYS)
+    @Generated(value = GenerationTime.INSERT)
     @Column(name = "update_time", insertable = false, nullable = false,
             columnDefinition = "datetime default CURRENT_TIMESTAMP")
     Date updateTime;

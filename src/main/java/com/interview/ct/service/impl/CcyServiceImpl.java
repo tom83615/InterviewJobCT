@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -43,8 +44,12 @@ public class CcyServiceImpl extends CcyService {
         if (ccy.getRate() == null || ccy.getRate().compareTo(new BigDecimal(0)) < 1) {
             return false;
         }
+        if (ccy.getUpdateTime() == null) { //set if null
+            ccy.setUpdateTime(new Date());
+        }
         existCcy.setNameZh(ccy.getNameZh());
         existCcy.setRate(ccy.getRate());
+        existCcy.setUpdateTime(ccy.getUpdateTime());
         ccyDao.save(existCcy);
         return true;
     }
