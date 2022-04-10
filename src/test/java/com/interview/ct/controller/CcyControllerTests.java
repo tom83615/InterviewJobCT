@@ -1,8 +1,5 @@
 package com.interview.ct.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.interview.ct.service.CcyService;
-
 import org.junit.jupiter.api.Test;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,6 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -22,12 +18,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CcyControllerTests {
     @Autowired
     MockMvc mockMvc;
-
-    @Autowired
-    CcyService ccyService;
-
-    @Autowired
-    ObjectMapper objectMapper;
 
     @Test
     public void shouldGetADefaultCcyWhenCallMethod() throws Exception {
