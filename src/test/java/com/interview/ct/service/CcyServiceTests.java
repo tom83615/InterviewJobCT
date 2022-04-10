@@ -9,7 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,6 +23,24 @@ public class CcyServiceTests {
 
     @MockBean
     BitcoinDao bitcoinDao;
+
+    @Test
+    public void shouldGetAllCcyWhenCallFindAll(){
+        List<BitcoinEntity> expectedEntities = new ArrayList<>();
+        BitcoinEntity entity = new BitcoinEntity();
+        entity.setName("TWD");
+        entity.setNameZh("新臺幣");
+        entity.setRate(new BigDecimal("1000000.0000"));
+        entity.setCreateTime(new Date());
+        entity.setUpdateTime(new Date());
+        expectedEntities.add(entity);
+
+        Mockito.when(bitcoinDao.findAll()).thenReturn(expectedEntities);
+
+        Iterable<BitcoinEntity> actualEntities = ccyService.getAll();
+
+        assertEquals(expectedEntities, actualEntities);
+    }
 
     @Test
     public void shouldGetCcyWhenCallFindByName(){

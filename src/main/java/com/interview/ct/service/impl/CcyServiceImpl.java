@@ -16,6 +16,11 @@ public class CcyServiceImpl extends CcyService {
     BitcoinDao ccyDao;
 
     @Override
+    public Iterable<BitcoinEntity> getAll() {
+        return ccyDao.findAll();
+    }
+
+    @Override
     public Optional<BitcoinEntity> findByName(String name) {
         return ccyDao.findByName(name);
     }
